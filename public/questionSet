@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quiz</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    function check() {
+      let value = document.querySelector('.check').value;
+      alert(value)
+    }
+
+    </script>
+    <h1>Question</h1>
+    <form action="result" method="post">
+      question
+      <input type=submit value="submit" id="result"></input>
+    </form>
+  </body>
+</html>
