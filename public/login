@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TODO</title>
+  </head>
+  <body>
+    <center><div class="heading">
+      <p style="font-size:40px;">Login</p>
+    </div>
+    LOGIN_MESSAGE
+    <form action="/quizSet" method="post">
+      <div class="userName" style="font-size:20px;">
+        userName:<input type="text" name="userName">
+      </div><br>
+      <div>
+        <input type="submit">
+      </div>
+    </form>
+  </body>
+</html>

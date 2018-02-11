@@ -5,7 +5,7 @@
   {"Q":"HTML stands for?","ans":"Hyper Text Markup Language",
     "option":{"A":"Hyper Text Markup Language","B":"High Text Markup Language","C":"Hyper Tabular Markup Language","D":"None of these"}
   },
-  {"Q":"The attribute of form tag","ans":"Both (A)&(B)",
+  {"Q":"The attribute of &lt;form&gt; tag","ans":"Both (A)&(B)",
     "option":{"A":"Method","B":"Action","C":"Both (A)&(B)","D":"None of These"}
   },
   {"Q":"www is based on which model?","ans":"Client-server",

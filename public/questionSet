@@ -4,18 +4,31 @@
     <meta charset="utf-8">
     <title>Quiz</title>
   </head>
-  <body>
-    <script type="text/javascript">
-    function check() {
-      let value = document.querySelector('.check').value;
-      alert(value)
+  <script type="text/javascript">
+  let totalSeconds = 60*0.5;
+  let minutes = parseInt(totalSeconds/60);
+  let seconds = parseInt(totalSeconds%60);
+  let checkTime=()=>{
+    document.getElementById('quiz-time-left').innerText= 'Time Left: '+minutes+" minute "+seconds+" second";
+    if (totalSeconds <= 0) {
+      setTimeout(document.quiz.submit(), 1);
+    }else {
+      totalSeconds = totalSeconds-1;
+      minutes = parseInt(totalSeconds/60);
+      seconds = parseInt(totalSeconds%60);
+      setTimeout(()=>checkTime(), 1000);
     }
-
-    </script>
-    <h1>Question</h1>
-    <form action="result" method="post">
-      question
-      <input type=submit value="submit" id="result"></input>
-    </form>
+  }
+  window.onload = checkTime;
+  </script>
+  <body>
+    <div class="">
+      <div style="font-weight:bold" id="quiz-time-left"></div>
+      <h1>Question</h1>
+      <form action="result" name="quiz" method="post">
+        question
+        <input type=submit value="submit" id="result"></input>
+      </form>
+    </div>
   </body>
 </html>
