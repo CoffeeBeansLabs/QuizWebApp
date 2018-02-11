@@ -9,12 +9,12 @@
       <p style="font-size:40px;">Login</p>
     </div>
     LOGIN_MESSAGE
-    <form action="/quizSet" method="post">
+    <form action="/login" method="post">
       <div class="userName" style="font-size:20px;">
         userName:<input type="text" name="userName">
       </div><br>
       <div>
-        <input type="submit">
+        <input type="submit" value="submit">
       </div>
     </form>
   </body>

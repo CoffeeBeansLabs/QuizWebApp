@@ -40,14 +40,33 @@ const loadUser = function(req, res,next) {
 let serveLoginPage = function (req,res) {
   res.set('Content-Type','text/html');
   res.send(templates.loginPage.replace('LOGIN_MESSAGE',req.cookies.message||''));
-  res.end();
 }
 
 let serveQuizPage = function (req,res) {
   let html = templates.quizPage;
+  html = html.replace(/question/, getHtmlForm())
   res.set('Content-Type','text/html');
   res.send(html);
-  res.end();
+}
+
+let redirectLoggedOutUserToLogin = (req, res,next)=>{
+  let allowedUrlForLoogedUser = ['/quizSet','/result'];
+
+  let sessionid = req.cookies.sessionid;
+  if (allowedUrlForLoogedUser.includes(req.url) && !sessionManager.getUserName(sessionid)) {
+    res.redirect('/login');
+    return ;
+  }
+  next();
+}
+
+let redirectLoggedUserToQuizPage = (req, res,next) => {
+  let sessionid = req.cookies.sessionid;
+  if (['/login'].includes(req.url) && sessionManager.getUserName(sessionid)) {
+    res.redirect('/quizSet');
+    return ;
+  }
+  next();
 }
 
 const getHtmlForm = ()=> {
@@ -68,19 +87,19 @@ const getHtmlForm = ()=> {
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(loadUser);
-app.use(express.static('./public'))
 app.use((req,res,next)=>{
   console.log(logger);
   logger(fs,req,res,next);
 })
+app.use(redirectLoggedUserToQuizPage)
+app.use(redirectLoggedOutUserToLogin)
 
 app.get("/login",serveLoginPage);
 
 app.get('/quizSet',serveQuizPage);
 
-app.post('/quizSet',(req,res)=>{
+app.post('/login',(req,res)=>{
   let user = registeredUsers.find(u=>req.body.userName==u.userName);
-  console.log(req.body);
   if(user) {
     let sessionid = sessionManager.createSession(req.body.userName);
     res.set('Set-Cookie',[`sessionid=${sessionid}`,`message='';Max-Age=0`]);
@@ -93,7 +112,8 @@ app.post('/quizSet',(req,res)=>{
 });
 
 app.post('/result', (req, res)=>{
-  console.log(res.body);
+  let sessionid = req.cookies.sessionid
+  res.set('Set-Cookie',[`sessionid=${sessionid}`,`message='';Max-Age=5`]);
   let result = 'seccessfully submited'
   res.send(result);
 })
