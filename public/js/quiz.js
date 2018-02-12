@@ -1,6 +1,10 @@
 let totalSeconds = 60*0.5;
 let minutes = parseInt(totalSeconds/60);
 let seconds = parseInt(totalSeconds%60);
+function init(){
+document.getElementById("quiz-time-left").innerHTML='Time Left: ' + minutes + ' minutes ' + seconds + ' seconds';
+setTimeout(checkTime(),1000);
+}
 let checkTime=()=>{
   document.getElementById('quiz-time-left').innerText= 'Time Left: '+minutes+" minute "+seconds+" second";
   if (totalSeconds <= 0) {
@@ -12,4 +16,4 @@ let checkTime=()=>{
     setTimeout(()=>checkTime(), 1000);
   }
 }
-window.onload = checkTime;
+window.onload = init;

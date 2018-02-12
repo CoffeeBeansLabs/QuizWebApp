@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TODO</title>
+    <title>Quiz</title>
   </head>
   <body>
     <center><div class="heading">
@@ -11,7 +11,8 @@
     LOGIN_MESSAGE
     <form action="/login" method="post">
       <div class="userName" style="font-size:20px;">
-        userName:<input type="text" name="userName">
+        userName:<input type="text" name="userName"><br>
+        password:<input type="password" name="password">
       </div><br>
       <div>
         <input type="submit" value="submit">

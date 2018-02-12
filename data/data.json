@@ -1,14 +1,14 @@
 {"set":[
-  {"Q":"The common element which describe the web page, is ?","ans":"All of these",
+  {"1":"The common element which describe the web page, is ?","ans":"All of these",
     "option":{"A":"heading","B":"paragraph","C":"list","D":"All of these"}
   },
-  {"Q":"HTML stands for?","ans":"Hyper Text Markup Language",
+  {"2":"HTML stands for?","ans":"Hyper Text Markup Language",
     "option":{"A":"Hyper Text Markup Language","B":"High Text Markup Language","C":"Hyper Tabular Markup Language","D":"None of these"}
   },
-  {"Q":"The attribute of &lt;form&gt; tag","ans":"Both (A)&(B)",
+  {"3":"The attribute of &lt;form&gt; tag","ans":"Both (A)&(B)",
     "option":{"A":"Method","B":"Action","C":"Both (A)&(B)","D":"None of These"}
   },
-  {"Q":"www is based on which model?","ans":"Client-server",
+  {"4":"www is based on which model?","ans":"Client-server",
     "option":{"A":"Local-server","B":"Client-server","C":"3-tier","D":"None of These"}
   }]
 }
